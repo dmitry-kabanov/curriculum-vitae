@@ -1,2 +1,6 @@
 # Emacs artifacts
 auto/
+
+# Jabref artifacts
+*.bib.bak
+*.bib.sav
