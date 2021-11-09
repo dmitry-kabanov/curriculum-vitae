@@ -1,4 +1,4 @@
-$ENV{'TEXINPUTS'} = './moderncv//:' . $ENV{'TEXINPUTS'};
+$ENV{'TEXINPUTS'} = './moderncv//:' . ($ENV{'TEXINPUTS'} // '');
 
 @default_files = (
     'info.tex',
