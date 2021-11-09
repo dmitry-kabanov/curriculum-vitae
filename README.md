@@ -4,11 +4,15 @@ This repository contains my CV in LaTeX format.
 
 It is based on the [ModernCV](https://github.com/moderncv/moderncv) package.
 
-Compilation to produce PDF file
+Note that it also uses [Git LFS](https://git-lfs.github.com/) for storing PDF
+files.
+
+## Compilation to produce PDF file
 
 The easiest way to compile is to use `LatexMk`:
 
     latexmk -pdf DmitryKabanov_CV.tex
+
 
 ## Workflow that I use
 
