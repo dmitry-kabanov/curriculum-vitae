@@ -1,0 +1,147 @@
+%------------------------------------------------------------------------------
+% CV of Dmitry Kabanov.
+% Created using LaTeX package `moderncv`.
+% ------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+% Font sizes: 10, 11, 12
+% Paper: a4paper, letterpaper, a5paper, legalpaper, executivepaper, landscape
+% Font: sans or roman
+% Color: nocolor
+% Draft/final option: draft, final
+% Default options are: a4paper, 11pt, color, final
+\documentclass[11pt,a4paper,sans]{moderncv} 
+
+% CV theme: casual (default), classic, oldstyle, banking
+\moderncvstyle{classic}
+% CV color: blue (default), orange, green, red, purple, grey, black, burgundy
+\moderncvcolor{deepblue}
+
+% Width of the left column.
+\setlength{\hintscolumnwidth}{2.75cm}
+
+% Font settings.
+% Character encoding.
+\usepackage[utf8]{inputenc}
+% `Merriweather` is a modern screen-friendly font.
+\usepackage{merriweather}
+
+% Page geometry.
+\usepackage[scale=0.80]{geometry} % Reduce document margins
+%\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
+%\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
+\recomputelengths
+
+% Remove dots in the end of \cventry lines.
+\usepackage{xpatch}
+\xpatchcmd{\cventry}{.\strut}{\strut}{}{}
+
+\makeatletter
+\makeatother
+
+\input{info.tex}
+
+% ------------------------------------------------------------------------------
+% Bibliography settings.
+\usepackage[
+style=numeric-comp,
+bibstyle=numeric,
+backend=biber,
+giveninits=true,
+defernumbers=true,
+sorting=ydnt,
+]{biblatex}
+% \bibliography{conferences,publications}
+\bibliography{conferences,publications}
+
+\defbibenvironment{bibliography}
+  {\list
+    {\printtext[labelnumberwidth]{% label format from numeric.bbx
+        \printfield{labelprefix}%
+        \printfield{labelnumber}}}
+    {\setlength{\topsep}{0pt}% layout parameters from moderncvstyleclassic.sty
+      \setlength{\labelwidth}{\hintscolumnwidth}%
+      \setlength{\labelsep}{\separatorcolumnwidth}%
+      \leftmargin\labelwidth%
+      \advance\leftmargin\labelsep}%
+    \sloppy\clubpenalty4000\widowpenalty4000}
+  {\endlist}
+  {\item}
+\defbibenvironment{bibliographyconf}
+  {\list
+    {\printtext[labelnumberwidth]{% label format from numeric.bbx
+        \printfield{month}%
+        \setunit*{\space}%
+        \printfield{year}}}
+    {\setlength{\topsep}{0pt}% layout parameters from moderncvstyleclassic.sty
+      \setlength{\labelwidth}{\hintscolumnwidth}%
+      \setlength{\labelsep}{\separatorcolumnwidth}%
+      \leftmargin\labelwidth%
+      \advance\leftmargin\labelsep}%
+    \sloppy\clubpenalty4000\widowpenalty4000}
+  {\endlist}
+  {\item}
+\renewcommand{\mkbibbrackets}{}
+% Remove'' `In:' from the references.
+\renewbibmacro{in:}{}
+% Replace 'and' with comma.
+\renewcommand*{\finalnamedelim}{\addcomma\space}
+\AtEveryBibitem{%
+  \ifentrytype{inproceedings}
+  {\clearfield{month}%
+    \clearfield{year}}
+  {}
+}
+\DefineBibliographyStrings{english}{
+  january          = {Jan},
+  february         = {Feb},
+  march            = {Mar},
+  april            = {Apr},
+  may              = {May},
+  june             = {Jun},
+  july             = {Jul},
+  august           = {Aug},
+  september        = {Sep},
+  october          = {Oct},
+  november         = {Nov},
+  december         = {Dec},
+}
+
+\newcommand\Colorhref[3][color1]{\href{#2}{\small\color{#1}#3}}
+
+
+%-------------------------------------------------------------------------------
+% Example usage of commands provided by the `moderncv` package:
+% \cventry{year--year}{Degree/Job title}{Institute/Company}{Place}{Description}
+% \cvline{left-column}{right-column}
+% \cvlanguage{language 1}{Skill level}{Comment}
+% Arguments not required can be left empty.
+
+
+%-------------------------------------------------------------------------------
+%	CURRICULUM VITAE
+%-------------------------------------------------------------------------------
+\begin{document}
+% Print the CV title
+\makecvtitle%
+
+
+%----------------------------------------------------------------------------------------
+%	Publications SECTION
+%----------------------------------------------------------------------------------------
+
+\section{List of publications}
+
+\nocite{*}
+\printbibliography[heading=none, nottype=inproceedings]
+
+
+% ------------------------------------------------------------------------------
+\section{Conference talks and posters}
+\printbibliography[env=bibliographyconf,
+                   heading=none,
+                   type=inproceedings]
+
+\end{document}
