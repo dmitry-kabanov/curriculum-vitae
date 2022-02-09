@@ -1,0 +1,132 @@
+%------------------------------------------------------------------------------
+% Resume of Dmitry Kabanov.
+% Created using LaTeX package `moderncv`.
+% ------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+% Font sizes: 10, 11, 12
+% Paper: a4paper, letterpaper, a5paper, legalpaper, executivepaper, landscape
+% Font: sans or roman
+% Color: nocolor
+% Draft/final option: draft, final
+% Default options are: a4paper, 11pt, color, final
+\documentclass[11pt,a4paper,sans]{moderncv} 
+
+% CV theme: casual (default), classic, oldstyle, banking
+\moderncvstyle{classic}
+% CV color: blue (default), orange, green, red, purple, grey, black, burgundy
+\moderncvcolor{deepblue}
+
+% Width of the left column.
+\setlength{\hintscolumnwidth}{3cm}
+
+% Font settings.
+% Character encoding.
+\usepackage[utf8]{inputenc}
+% `Merriweather` is a modern screen-friendly font.
+\usepackage{merriweather}
+
+% Page geometry.
+\usepackage[scale=0.80]{geometry} % Reduce document margins
+%\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
+%\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
+\recomputelengths
+
+% Remove dots in the end of \cventry lines.
+\usepackage{xpatch}
+\xpatchcmd{\cventry}{.\strut}{\strut}{}{}
+
+\makeatletter
+\makeatother
+
+% Personal data.
+\input{info.tex}
+% \photo[picture-height][frame-thickness]{photo-filename}
+\photo[70pt][0.0pt]{photo}
+
+%-------------------------------------------------------------------------------
+% Example usage of commands provided by the `moderncv` package:
+% \cventry{year--year}{Degree/Job title}{Institute/Company}{Place}{Description}
+% \cvline{left-column}{right-column}
+% \cvlanguage{language 1}{Skill level}{Comment}
+% Arguments not required can be left empty.
+
+
+%-------------------------------------------------------------------------------
+%	CURRICULUM VITAE
+%-------------------------------------------------------------------------------
+\begin{document}
+% Print the CV title
+\makecvtitle%
+
+
+% ----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE SECTION
+% ----------------------------------------------------------------------------------------
+
+\section{Work Experience}
+
+% \cventry{year--year}{Degree/Job title}{Institute/Company}{Place}{Grade}{Description}
+\cventry{2019--present}{Researcher}{RWTH Aachen University}{Aachen, Germany}{}{}
+\cvline{}{Implement neural networks in Tensorflow 2 with custom training and loss functions}
+\cventry
+{2018--2019}
+{Software developer}
+{One Omega Seismics}
+{Thuwal, Saudi Arabia}
+{}
+{}
+\cvline{}{Refactor two geophysical numerical solvers in C and add integration tests}
+\cventry{2010--2012}{Software developer}
+{Fabrikant.ru}{Moscow, Russia}{}{}
+\cvline{}{Develop a backend system for remote procedure calls in PHP}
+\cventry{2008--2009}{Part-time software developer}
+{AWAX Studio}{Moscow, Russia}{}{}
+\cvline{}{Develop websites in PHP}
+
+
+%-------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%-------------------------------------------------------------------------------
+\section{Education}
+
+\cventry{2012--2018}
+        {PhD in Applied Mathematics and Computational Science}{}{}{}{}
+\cvline{}{King Abdullah University of Science and Technology, Saudi
+Arabia}
+% \cvline{\small dissertation}
+%        {Numerical computation of linear stability of detonations}
+
+\cventry
+  {2004--2010}
+  {Diploma (BSc + MSc), Engineer-Physicist}{}{}{}{}
+\cvline{}{National Nuclear Research University MEPhI, Moscow, Russia}
+
+
+% ------------------------------------------------------------------------------
+\section{Languages}
+\cvitem{}{English C2, Deutsch B1, Russian native}
+
+
+% ------------------------------------------------------------------------------
+\section{Skills}
+
+\cvitem{}{Machine learning, numerical methods, linear algebra}
+\cvitem{}{Unix, Python, NumPy, SciPy, Git, Bash, \LaTeX{} (9+ years)}
+\cvitem{}{Tensorflow 2, Scikit-learn, Pandas (2+ years)}
+\cvitem{}{C, C++, Cython, Matlab, Make, MPI, OpenMP, SQL (1+ year)}
+\cvitem{}{Object-oriented programming}
+\cvitem{}{Unit testing}
+\cvitem{}{High-performant numerical codes}
+
+
+%-------------------------------------------------------------------------------
+\section{Hobbies}
+
+\renewcommand{\listitemsymbol}{-~} % Changes the symbol used for lists
+
+\cvitem{}{Playing and composing music, hiking, reading}
+
+\end{document}
