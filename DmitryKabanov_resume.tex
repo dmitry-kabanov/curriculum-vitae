@@ -15,21 +15,28 @@
 \documentclass[11pt,a4paper,sans]{moderncv} 
 
 % CV theme: casual (default), classic, oldstyle, banking
-\moderncvstyle{classic}
+% I use my own custom style `personal'.
+\moderncvstyle{personal}
 % CV color: blue (default), orange, green, red, purple, grey, black, burgundy
-\moderncvcolor{deepblue}
+\moderncvcolor{blue}
+
+% Make blue color from `moderncv` theme darker.
+\definecolor{color1}{rgb}{0.05,0.22,0.61}
+% Extra colors
+\definecolor{white}{RGB}{255,255,255}
+\definecolor{lightgray}{HTML}{B9B9B9}
 
 % Width of the left column.
-\setlength{\hintscolumnwidth}{3cm}
+\setlength{\hintscolumnwidth}{0.3\textwidth}
 
 % Font settings.
 % Character encoding.
 \usepackage[utf8]{inputenc}
 % `Merriweather` is a modern screen-friendly font.
-\usepackage{merriweather}
+%\usepackage{merriweather}
 
 % Page geometry.
-\usepackage[scale=0.80]{geometry} % Reduce document margins
+\usepackage[scale=0.90]{geometry} % Reduce document margins
 %\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
 %\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
 \recomputelengths
@@ -38,13 +45,25 @@
 \usepackage{xpatch}
 \xpatchcmd{\cventry}{.\strut}{\strut}{}{}
 
+\newcommand\skill[1]{%
+    \begin{tikzpicture}
+        %\foreach [count=\i] \y in {#1}{
+            %\draw[fill=maingray,maingray] (0,0) rectangle (8,\i+0.4);
+            %\draw[fill=white,gray](0,\i) rectangle (\y,\i+0.4);
+            %\node[above right] at (0,\i+0.4) {asdf};
+        %}
+        \draw[fill=lightgray, lightgray] (0, 0) rectangle (\linewidth, 0.32);
+        \draw[fill=white, color1] (0, 0) rectangle (\linewidth*#1/5, 0.32);
+    \end{tikzpicture}%
+}
+
 \makeatletter
 \makeatother
 
 % Personal data.
+\title{R\'esum\'e}
 \input{info.tex}
 % \photo[picture-height][frame-thickness]{photo-filename}
-\photo[70pt][0.0pt]{photo}
 
 %-------------------------------------------------------------------------------
 % Example usage of commands provided by the `moderncv` package:
@@ -61,6 +80,15 @@
 % Print the CV title
 \makecvtitle%
 
+%\section{Summary}
+\cvline{}{%
+Having passion for software development and mathematics, I am looking
+for a~job that combines them such as \textbf{data scientist},
+\textbf{machine learning engineer}, \textbf{researcher}.
+I~have industrial experience (5 years) in~software development
+as well as 9~years of~research experience.
+I am dedicated to writing clean, well-tested, high-performant codes.
+}
 
 % ----------------------------------------------------------------------------------------
 %	WORK EXPERIENCE SECTION
@@ -69,20 +97,38 @@
 \section{Work Experience}
 
 % \cventry{year--year}{Degree/Job title}{Institute/Company}{Place}{Grade}{Description}
-\cventry{2019--present}{Researcher}{RWTH Aachen University}{Aachen, Germany}{}{}
-\cvline{}{Implement neural networks in Tensorflow 2 with custom training and loss functions}
-\cventry
-{2018--2019}
-{Software developer}
-{One Omega Seismics}
-{Thuwal, Saudi Arabia}
-{}
-{}
-\cvline{}{Refactor two geophysical numerical solvers in C and add integration tests}
-\cventry{2010--2012}{Software developer}
+\cventry{04/2019--present}{Researcher}{RWTH Aachen University}{Aachen, Germany}{}{}
+\cvline{}{
+  Work on three projects in scientific machine learning (supervised learning
+  for physics-related tasks) that lead to two published papers,
+  one in~preparation.
+  Take leading role in code development.
+  \begin{itemize}
+  \item Implement neural networks in Tensorflow 2/Keras
+        with custom training and loss functions
+  \item Optimize hyperparameters via grid search and Pyperopt library
+  \item Conduct computational experiments
+  \item Write unit and integration tests using Pytest
+  \end{itemize}
+  \vspace*{-\baselineskip}\leavevmode
+}
+
+\cventry{07/2018--03/2019}{Software developer}{One Omega Seismics}{Thuwal, Saudi Arabia}{}{}
+\cvline{}{
+  I was hired by geophysical startup to improve quality of their seismic modeling software.
+  \begin{itemize}
+    \item Refactor two codes written in C programming language
+    \item Add integration tests using Python and Bash
+    \item Setup continuous integration (CI) on CircleCI
+  \end{itemize}
+  \vspace*{-\baselineskip}\leavevmode
+}
+
+\cventry{05/2010--09/2012}{Software developer}
 {Fabrikant.ru}{Moscow, Russia}{}{}
 \cvline{}{Develop a backend system for remote procedure calls in PHP}
-\cventry{2008--2009}{Part-time software developer}
+
+\cventry{08/2008--12/2009}{Part-time software developer}
 {AWAX Studio}{Moscow, Russia}{}{}
 \cvline{}{Develop websites in PHP}
 
@@ -92,34 +138,36 @@
 %-------------------------------------------------------------------------------
 \section{Education}
 
-\cventry{2012--2018}
+\cventry{09/2012--06/2018}
         {PhD in Applied Mathematics and Computational Science}{}{}{}{}
-\cvline{}{King Abdullah University of Science and Technology, Saudi
+\cvline{}{\emph{King Abdullah University of Science and Technology}, Saudi
 Arabia}
 % \cvline{\small dissertation}
 %        {Numerical computation of linear stability of detonations}
 
 \cventry
-  {2004--2010}
+  {09/2004--02/2010}
   {Diploma (BSc + MSc), Engineer-Physicist}{}{}{}{}
-\cvline{}{National Nuclear Research University MEPhI, Moscow, Russia}
+\cvline{}{\emph{National Nuclear Research University MEPhI}, Moscow, Russia}
 
 
 % ------------------------------------------------------------------------------
 \section{Languages}
-\cvitem{}{English C2, Deutsch B1, Russian native}
-
+\cvlanguage{English}{advanced (C1)}{9 years}
+\cvlanguage{German}{upper intermediate (B2)}{3 years}
+\cvlanguage{Russian}{native}{}
 
 % ------------------------------------------------------------------------------
 \section{Skills}
-
-\cvitem{}{Machine learning, numerical methods, linear algebra}
-\cvitem{}{Unix, Python, NumPy, SciPy, Git, Bash, \LaTeX{} (9+ years)}
-\cvitem{}{Tensorflow 2, Scikit-learn, Pandas (2+ years)}
-\cvitem{}{C, C++, Cython, Matlab, Make, MPI, OpenMP, SQL (1+ year)}
-\cvitem{}{Object-oriented programming}
-\cvitem{}{Unit testing}
-\cvitem{}{High-performant numerical codes}
+\cvitemwithcomment{\skill{5}}{%
+  Unix, Python, NumPy, SciPy, Pytest, Git, Bash, \LaTeX{}}{9 years}
+\cvitemwithcomment{\skill{4}}{%
+  Machine learning, Tensorflow 2, Scikit-learn, Pandas}{2 years}
+\cvitemwithcomment{\skill{2}}{%
+  C, C++, Cython, Matlab, Make, MPI, OpenMP, SQL}{1 year}
+\cvitemwithcomment{\skill{5}}{Object-oriented programming (OOP)}{10 years}
+% \cvitem{}{Unit testing}
+% \cvitem{}{High-performant numerical codes}
 
 
 %-------------------------------------------------------------------------------
