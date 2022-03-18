@@ -17,19 +17,25 @@
 % CV theme: casual (default), classic, oldstyle, banking
 \moderncvstyle{classic}
 % CV color: blue (default), orange, green, red, purple, grey, black, burgundy
-\moderncvcolor{deepblue}
+\moderncvcolor{blue}
+
+% Make blue color from `moderncv` theme darker.
+\definecolor{color1}{rgb}{0.05,0.22,0.61}
+% Extra colors
+\definecolor{white}{RGB}{255,255,255}
+\definecolor{lightgray}{HTML}{B9B9B9}
 
 % Width of the left column.
-\setlength{\hintscolumnwidth}{2.75cm}
+\setlength{\hintscolumnwidth}{0.3\textwidth}
 
 % Font settings.
 % Character encoding.
 \usepackage[utf8]{inputenc}
 % `Merriweather` is a modern screen-friendly font.
-\usepackage{merriweather}
+\usepackage{helvet}
 
 % Page geometry.
-\usepackage[scale=0.80]{geometry} % Reduce document margins
+\usepackage[scale=0.85]{geometry} % Reduce document margins
 %\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
 %\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
 \recomputelengths
@@ -41,6 +47,7 @@
 \makeatletter
 \makeatother
 
+\title{Curriculum vit\ae}
 \input{info.tex}
 
 % ------------------------------------------------------------------------------
@@ -133,9 +140,15 @@ sorting=ydnt,
 % -------------------------------------------------------------------------------
 \section{Research Experience}
 
-\cventry{2019--present}{Postdoctoral researcher}{Chair of Mathematics for Uncertainty Quantification,
-  RWTH Aachen University, Aachen, Germany}{}{}{}
-\cvline{}{Solve inverse problems using physics-informed neural networks}
+\cventry{04/2019--present}{Postdoctoral researcher}{%
+Chair of Mathematics for Uncertainty Quantification}{%
+RWTH Aachen University, Aachen, Germany}{}{}
+\cvline{}{%
+Work on three projects in scientific machine learning (supervised learning
+for physics-related tasks) that lead to two published papers,
+one in~preparation.
+Take leading role in code development and conducting numerical experiments
+in~two of these projects.}
 
 % ----------------------------------------------------------------------------------------
 %	WORK EXPERIENCE SECTION
@@ -145,17 +158,17 @@ sorting=ydnt,
 
 % \cventry{year--year}{Degree/Job title}{Institute/Company}{Place}{Grade}{Description}
 \cventry
-{2018--2019}
+{07/2018--03/2019}
 {Software developer}
 {One Omega Seismics}
 {Thuwal, Saudi Arabia}
 {}
 {}
 \cvline{}{Refactor and test two geophysical numerical solvers}
-\cventry{2010--2012}{Software developer}
+\cventry{05/2010--09/2012}{Software developer}
 {Fabrikant.ru}{Moscow, Russia}{}{}
 \cvline{}{Develop a backend system for remote procedure calls}
-\cventry{2008--2009}{Part-time software developer}
+\cventry{08/2008--12/2009}{Part-time software developer}
 {AWAX Studio}{Moscow, Russia}{}{}
 \cvline{}{Develop websites}
 
@@ -193,8 +206,9 @@ sorting=ydnt,
 \cvitem{}{Unix, Python, NumPy, SciPy, Git, Bash, \LaTeX{} (9+ years)}
 \cvitem{}{Tensorflow 2, Scikit-learn, Pandas (2+ years)}
 \cvitem{}{C, C++, Cython, Matlab, Make, MPI, OpenMP, SQL (1+ year)}
-\cvitem{}{High-performant numerical codes, unit testing, OOP}
-\cvitem{}{English (fluent), Deutsch (B1), Russian (native)}
+\cvitem{}{Object-oriented programming}
+\cvitem{}{High-performant numerical codes, unit testing}
+\cvitem{}{English (fluent), Deutsch (B2), Russian (native)}
 
 
 %-------------------------------------------------------------------------------
@@ -269,15 +283,15 @@ sorting=ydnt,
 %----------------------------------------------------------------------------------------
 %	References SECTION
 %----------------------------------------------------------------------------------------
-
+\pagebreak
 \section{References}
 
 \renewcommand{\listitemsymbol}{-~} % Changes the symbol used for lists
 
-\cventry{}{Raul Tempone (tempone@uq.rwth-aachen.de)}{}{}{}{}
-\cvline{}{%
-  Alexander von Humboldt Professor, RWTH Aachen, Germany\newline
-  Professor of Applied Mathematics and Computational Science, KAUST, Saudi Arabia}
+% \cventry{}{Raul Tempone (tempone@uq.rwth-aachen.de)}{}{}{}{}
+% \cvline{}{%
+%   Alexander von Humboldt Professor, RWTH Aachen, Germany\newline
+%   Professor of Applied Mathematics and Computational Science, KAUST, Saudi Arabia}
 
 \cventry{}{Aslan Kasimov (a.kasimov@skoltech.ru)}{}{}{}{}
 \cvline{}{%
