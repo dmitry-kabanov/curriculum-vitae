@@ -57,6 +57,74 @@
     \end{tikzpicture}%
 }
 
+% ------------------------------------------------------------------------------
+% Bibliography settings.
+\usepackage[
+style=numeric-comp,
+bibstyle=numeric,
+backend=biber,
+giveninits=true,
+defernumbers=true,
+sorting=ydnt,
+]{biblatex}
+% \bibliography{conferences,publications}
+\bibliography{selected-publications}
+
+\defbibenvironment{bibliography}
+  {\list
+    {\printtext[labelnumberwidth]{% label format from numeric.bbx
+        \printfield{labelprefix}%
+        \printfield{labelnumber}}}
+    {\setlength{\topsep}{0pt}% layout parameters from moderncvstyleclassic.sty
+      \setlength{\labelwidth}{\hintscolumnwidth}%
+      \setlength{\labelsep}{\separatorcolumnwidth}%
+      \leftmargin\labelwidth%
+      \advance\leftmargin\labelsep}%
+    \sloppy\clubpenalty4000\widowpenalty4000}
+  {\endlist}
+  {\item}
+\defbibenvironment{bibliographyconf}
+  {\list
+    {\printtext[labelnumberwidth]{% label format from numeric.bbx
+        \printfield{month}%
+        \setunit*{\space}%
+        \printfield{year}}}
+    {\setlength{\topsep}{0pt}% layout parameters from moderncvstyleclassic.sty
+      \setlength{\labelwidth}{\hintscolumnwidth}%
+      \setlength{\labelsep}{\separatorcolumnwidth}%
+      \leftmargin\labelwidth%
+      \advance\leftmargin\labelsep}%
+    \sloppy\clubpenalty4000\widowpenalty4000}
+  {\endlist}
+  {\item}
+\renewcommand{\mkbibbrackets}{}
+% Remove'' `In:' from the references.
+\renewbibmacro{in:}{}
+% Replace 'and' with comma.
+\renewcommand*{\finalnamedelim}{\addcomma\space}
+\AtEveryBibitem{%
+  \ifentrytype{inproceedings}
+  {\clearfield{month}%
+    \clearfield{year}}
+  {}
+}
+\DefineBibliographyStrings{english}{
+  january          = {Jan},
+  february         = {Feb},
+  march            = {Mar},
+  april            = {Apr},
+  may              = {May},
+  june             = {Jun},
+  july             = {Jul},
+  august           = {Aug},
+  september        = {Sep},
+  october          = {Oct},
+  november         = {Nov},
+  december         = {Dec},
+}
+
+\newcommand\Colorhref[3][color1]{\href{#2}{\small\color{#1}#3}}
+
 \makeatletter
 \makeatother
 
@@ -101,11 +169,17 @@ I am dedicated to writing clean, well-tested, high-performant codes.
 \section{Work Experience}
 
 % \cventry{year--year}{Degree/Job title}{Institute/Company}{Place}{Grade}{Description}
+\cventry{06/2022--present}{Deep Learning Engineer / Software Developer}{Innoopract GmbH}{}{}{}
+\cvline{}{
+Work on machine learning projects in computer vision and natural language
+processing domains. Develop software.
+}
+
+
 \cventry{04/2019--03/2022}{Researcher}{RWTH Aachen University}{Aachen, Germany}{}{}
 \cvline{}{
   Work on three projects in scientific machine learning (supervised learning
-  for physics-related tasks) that lead to two published papers,
-  one in~preparation.
+  for physics-related tasks).
   Take leading role in code development.
   \begin{itemize}
   \item Implement neural networks in Tensorflow 2/Keras
@@ -168,11 +242,16 @@ Arabia}
 \cvitemwithcomment{\skill{4}}{%
   Machine learning, Tensorflow 2, Scikit-learn, Pandas}{2 years}
 \cvitemwithcomment{\skill{2}}{%
-  C, C++, Cython, Matlab, Make, MPI, OpenMP, SQL}{1 year}
+  C, C++, Cython, Matlab, Make, MPI, OpenMP, Docker, SQL}{1 year}
 \cvitemwithcomment{\skill{5}}{Object-oriented programming (OOP)}{10 years}
 % \cvitem{}{Unit testing}
 % \cvitem{}{High-performant numerical codes}
 
+%-------------------------------------------------------------------------------
+\section{Selected publications}
+
+\nocite{*}
+\printbibliography[heading=none, nottype=inproceedings]
 
 %-------------------------------------------------------------------------------
 \section{Hobbies}
