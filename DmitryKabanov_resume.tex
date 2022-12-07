@@ -14,6 +14,9 @@
 % Default options are: a4paper, 11pt, color, final
 \documentclass[11pt,a4paper,sans]{moderncv} 
 
+\input{glyphtounicode}
+\pdfgentounicode=1
+
 % CV theme: casual (default), classic, oldstyle, banking
 % I use my own custom style `personal'.
 \moderncvstyle{personal}
@@ -155,7 +158,7 @@ sorting=ydnt,
 Having passion for software development and math/computations, I am looking
 for a~job that combines them such as \textbf{data scientist},
 \textbf{machine learning engineer}, \textbf{researcher},
-\textbf{software developer} in math-rich domains.
+\textbf{software developer} in math/engineering-rich domains.
 I~have industrial experience (4+ years) in~business software development
 as well as 9~years of~research software development in computational physics
 and machine learning.
@@ -169,10 +172,11 @@ I am dedicated to writing clean, well-tested, high-performant codes.
 \section{Work Experience}
 
 % \cventry{year--year}{Degree/Job title}{Institute/Company}{Place}{Grade}{Description}
-\cventry{06/2022--present}{Deep Learning Engineer / Software Developer}{Innoopract GmbH}{}{}{}
+\cventry{06/2022--10/2022}{Deep Learning Engineer / Software Developer}{Innoopract GmbH}{Karlsruhe, Germany}{}{}
 \cvline{}{
-Work on machine learning projects in computer vision and natural language
-processing domains. Develop software.
+Train neural networks for named entity recognition for business purposes.
+Including full stack of machine learning-related activities: data labeling,
+training neural networks, deploying to mobile app, testing performance.
 }
 
 
@@ -184,7 +188,6 @@ processing domains. Develop software.
   \begin{itemize}
   \item Implement neural networks in Tensorflow 2/Keras
         with custom training and loss functions
-  \item Optimize hyperparameters via grid search and Hyperopt library
   \item Conduct computational experiments
   \item Write unit and integration tests using Pytest
   \end{itemize}
