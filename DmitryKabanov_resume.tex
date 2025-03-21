@@ -1,52 +1,54 @@
 %------------------------------------------------------------------------------
 % Resume of Dmitry Kabanov.
-% Created using LaTeX package `moderncv`.
-% ------------------------------------------------------------------------------
-
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
-% Font sizes: 10, 11, 12
-% Paper: a4paper, letterpaper, a5paper, legalpaper, executivepaper, landscape
-% Font: sans or roman
-% Color: nocolor
-% Draft/final option: draft, final
-% Default options are: a4paper, 11pt, color, final
-\documentclass[11pt,a4paper,sans]{moderncv} 
+\documentclass[11pt,a4paper]{article} 
 
 \input{glyphtounicode}
 \pdfgentounicode=1
 
-% CV theme: casual (default), classic, oldstyle, banking
-% I use my own custom style `personal'.
-\moderncvstyle{personal}
-% CV color: blue (default), orange, green, red, purple, grey, black, burgundy
-\moderncvcolor{blue}
-
-% Make blue color from `moderncv` theme darker.
-\definecolor{color1}{rgb}{0.05,0.22,0.61}
-% Extra colors
-\definecolor{white}{RGB}{255,255,255}
-\definecolor{lightgray}{HTML}{B9B9B9}
-
-% Width of the left column.
-\setlength{\hintscolumnwidth}{0.3\textwidth}
-
 % Font settings.
 % Character encoding.
 \usepackage[utf8]{inputenc}
-% `Merriweather` is a modern screen-friendly font.
-%\usepackage{merriweather}
+\usepackage{libertine}
+\usepackage{lato}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[scaled=0.96]{zi4}
 
 % Page geometry.
-\usepackage[scale=0.90]{geometry} % Reduce document margins
-%\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
-%\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
-\recomputelengths
+\usepackage[left=3cm, right=2cm, top=1.8cm, bottom=1.8cm]{geometry} % Reduce document margins
+\pagestyle{empty}
+\usepackage{parskip}
 
-% Remove dots in the end of \cventry lines.
-\usepackage{xpatch}
-\xpatchcmd{\cventry}{.\strut}{\strut}{}{}
+\usepackage[inline]{enumitem}
+\setlist{itemsep=-0.8em, leftmargin=1em}
+
+\usepackage{xcolor}
+
+\renewcommand{\section}[1]{%
+\begin{minipage}{\textwidth}
+\vspace{1em}
+\subsection*{#1 \hrulefill}
+\vspace{\parskip}
+\end{minipage}
+}
+
+% \newcommand{\header}[4]{%
+% \begin{minipage}{0.5\textwidth}
+% #1\\
+% \textbf{#2}
+% \end{minipage}%
+% \begin{minipage}{0.5\textwidth}
+% \begin{flushright}
+% \emph{#3}\\
+% #4
+% \end{flushright}
+% \end{minipage}%
+% }
+\newcommand{\header}[4]{%
+#1,
+\textbf{#2},
+\emph{#3},
+#4
+}
 
 \newcommand\skill[1]{%
     \begin{tikzpicture}
@@ -70,197 +72,181 @@ giveninits=true,
 defernumbers=true,
 sorting=ydnt,
 ]{biblatex}
-% \bibliography{conferences,publications}
 \bibliography{selected-publications}
 
-\defbibenvironment{bibliography}
-  {\list
-    {\printtext[labelnumberwidth]{% label format from numeric.bbx
-        \printfield{labelprefix}%
-        \printfield{labelnumber}}}
-    {\setlength{\topsep}{0pt}% layout parameters from moderncvstyleclassic.sty
-      \setlength{\labelwidth}{\hintscolumnwidth}%
-      \setlength{\labelsep}{\separatorcolumnwidth}%
-      \leftmargin\labelwidth%
-      \advance\leftmargin\labelsep}%
-    \sloppy\clubpenalty4000\widowpenalty4000}
-  {\endlist}
-  {\item}
-\defbibenvironment{bibliographyconf}
-  {\list
-    {\printtext[labelnumberwidth]{% label format from numeric.bbx
-        \printfield{month}%
-        \setunit*{\space}%
-        \printfield{year}}}
-    {\setlength{\topsep}{0pt}% layout parameters from moderncvstyleclassic.sty
-      \setlength{\labelwidth}{\hintscolumnwidth}%
-      \setlength{\labelsep}{\separatorcolumnwidth}%
-      \leftmargin\labelwidth%
-      \advance\leftmargin\labelsep}%
-    \sloppy\clubpenalty4000\widowpenalty4000}
-  {\endlist}
-  {\item}
-\renewcommand{\mkbibbrackets}{}
-% Remove'' `In:' from the references.
-\renewbibmacro{in:}{}
-% Replace 'and' with comma.
-\renewcommand*{\finalnamedelim}{\addcomma\space}
-\AtEveryBibitem{%
-  \ifentrytype{inproceedings}
-  {\clearfield{month}%
-    \clearfield{year}}
-  {}
-}
-\DefineBibliographyStrings{english}{
-  january          = {Jan},
-  february         = {Feb},
-  march            = {Mar},
-  april            = {Apr},
-  may              = {May},
-  june             = {Jun},
-  july             = {Jul},
-  august           = {Aug},
-  september        = {Sep},
-  october          = {Oct},
-  november         = {Nov},
-  december         = {Dec},
-}
-
-\newcommand\Colorhref[3][color1]{\href{#2}{\small\color{#1}#3}}
+\usepackage[hidelinks]{hyperref}
 
 \makeatletter
 \makeatother
 
 % Personal data.
-\title{R\'esum\'e}
-\input{info.tex}
+% \input{info.tex}
 % \photo[picture-height][frame-thickness]{photo-filename}
-
-%-------------------------------------------------------------------------------
-% Example usage of commands provided by the `moderncv` package:
-% \cventry{year--year}{Degree/Job title}{Institute/Company}{Place}{Description}
-% \cvline{left-column}{right-column}
-% \cvlanguage{language 1}{Skill level}{Comment}
-% Arguments not required can be left empty.
 
 
 %-------------------------------------------------------------------------------
 %	CURRICULUM VITAE
 %-------------------------------------------------------------------------------
 \begin{document}
-% Print the CV title
-\makecvtitle%
 
-\vspace{-1em}
+\begin{minipage}[t]{0.5\textwidth}
+\vspace{-3em}
+{\Huge \textbf{Dmitry Kabanov}}
+\end{minipage}%
+\begin{minipage}{0.5\textwidth}
+\begin{flushright}
+Münster, Germany\\
+\url{kabanov.dmitry@gmail.com}\\
+\url{https://www.linkedin.com/in/dmitrykabanov/}\\
+\url{https://github.com/dmitry-kabanov}
+\end{flushright}
+\end{minipage}
 
-%\section{Summary}
-\cvline{}{%
+% ----------------------------------------------------------------------------------------
+%	SUMMARY SECTION
+% ----------------------------------------------------------------------------------------
+%\section{\phantom{Summary}}
+%\vspace{-2.4em}
+
+\vspace{0.5em}
 Having passion for software development and math/computations, I am looking
-for a~job that combines them such as \textbf{data scientist},
-\textbf{machine learning engineer}, \textbf{researcher},
+for a~job that combines them such as \textbf{research software engineer},
+\textbf{machine learning engineer},
 \textbf{software developer} in math/engineering-rich domains.
 I~have industrial experience (4+ years) in~business software development
-as well as 9~years of~research software development in computational physics
+as well as 11~years of~research software development in computational physics
 and machine learning.
 I am dedicated to writing clean, well-tested, high-performant codes.
-}
+
 
 % ----------------------------------------------------------------------------------------
 %	WORK EXPERIENCE SECTION
 % ----------------------------------------------------------------------------------------
-
 \section{Work Experience}
+\header{
+  07-2023--present}{
+  Research Software Engineer}{
+  University of Münster}{
+  Münster, Germany}
 
-% \cventry{year--year}{Degree/Job title}{Institute/Company}{Place}{Grade}{Description}
-\cventry{06/2022--10/2022}{Deep Learning Engineer / Software Developer}{Innoopract GmbH}{Karlsruhe, Germany}{}{}
-\cvline{}{
-Train neural networks for named entity recognition for business purposes.
-Including full stack of machine learning-related activities: data labeling,
-training neural networks, deploying to mobile app, testing performance.
-}
+\begin{itemize}
+  \item Develop software \emph{Open Interfaces} to automatically connect
+        different numerical packages
+  \item Responsibilities: software architecture, coding, unit tests, continuous integration
+  \item Technologies: C, CMake, Google Test, Python, Pytest, Julia,
+        GitHub Actions.
+\end{itemize}
+
+\header{
+06/2022--10/2022}{
+Deep Learning Engineer}{
+Innoopract GmbH}{
+Karlsruhe, Germany}
+
+\begin{itemize}
+\item Full stack of machine learning-related activities
+      in a named entity recognition project
+% \item Data labeling
+\item Programming and training neural networks
+\item Deploying to mobile app and testing real-life performance
+\end{itemize}
+\vspace{\parskip}
 
 
-\cventry{04/2019--03/2022}{Researcher}{RWTH Aachen University}{Aachen, Germany}{}{}
-\cvline{}{
-  Work on three projects in scientific machine learning (supervised learning
-  for physics-related tasks).
-  Take leading role in code development.
-  \begin{itemize}
-  \item Implement neural networks in Tensorflow 2/Keras
-        with custom training and loss functions
-  \item Conduct computational experiments
-  \item Write unit and integration tests using Pytest
-  \end{itemize}
-  \vspace*{-\baselineskip}\leavevmode
-}
+\header{
+04/2019--04/2022}{
+Researcher}{
+RWTH Aachen University}{
+Aachen, Germany}
 
-\cventry{07/2018--03/2019}{Software developer}{One Omega Seismics}{Thuwal, Saudi Arabia}{}{}
-\cvline{}{
-  I was hired by geophysical startup to improve quality of their seismic modeling software.
-  \begin{itemize}
-    \item Refactor two codes written in C programming language
-    \item Add integration tests using Python and Bash
-    \item Setup continuous integration (CI) on CircleCI
-  \end{itemize}
-  \vspace*{-\baselineskip}\leavevmode
-}
+\begin{itemize}
+\item Work in projects in scientific machine learning
+      (supervised learning for physics-related tasks)
+\item Implement neural networks in Tensorflow 2/Keras
+      with custom training and loss functions
+\item Conduct computational experiments
+% \item Write unit and integration tests using Pytest
+\end{itemize}
+\vspace{\parskip}
 
-\cventry{05/2010--09/2012}{Software developer}
-{Fabrikant.ru}{Moscow, Russia}{}{}
-\cvline{}{Develop a backend system for remote procedure calls in PHP}
 
-\cventry{08/2008--12/2009}{Part-time software developer}
-{AWAX Studio}{Moscow, Russia}{}{}
-\cvline{}{Develop websites in PHP}
+\header{
+07/2018--03/2019}{
+Research Software Engineer}{
+One Omega Seismics}{
+Thuwal, Saudi Arabia}
+
+\begin{itemize}
+  \item Work on two geophysical codes in C programming language
+  \item Refactor, add integration tests using Python and Bash
+%   \item Setup continuous integration (CI)
+\end{itemize}
+\vspace{\parskip}
+
+
+\header{
+05/2010--09/2012}{
+Software developer}{
+Fabrikant.ru}{
+Moscow, Russia}
+
+Develop a backend system for remote procedure calls
+\vspace{\parskip}
+
+% \header{
+% 08/2008--12/2009}{
+% Part-time software developer}{
+% AWAX Studio}{
+% Moscow, Russia}
+
+% Develop websites in PHP
 
 
 %-------------------------------------------------------------------------------
 %	EDUCATION SECTION
 %-------------------------------------------------------------------------------
 \section{Education}
+09/2012--04/2018, \textbf{PhD in Applied Mathematics and Computational Science}\\
+\emph{King Abdullah University of Science and Technology}, Saudi Arabia
 
-\cventry{09/2012--06/2018}
-        {PhD in Applied Mathematics and Computational Science}{}{}{}{}
-\cvline{}{\emph{King Abdullah University of Science and Technology}, Saudi
-Arabia}
-% \cvline{\small dissertation}
-%        {Numerical computation of linear stability of detonations}
-
-\cventry
-  {09/2004--02/2010}
-  {Diploma (BSc + MSc), Engineer-Physicist}{}{}{}{}
-\cvline{}{\emph{National Nuclear Research University MEPhI}, Moscow, Russia}
+09/2004--02/2010, \textbf{Diploma (BSc + MSc), Engineer-Physicist}\\
+\emph{National Nuclear Research University MEPhI}, Moscow, Russia
 
 
+% ------------------------------------------------------------------------------
+% Languages
 % ------------------------------------------------------------------------------
 \section{Languages}
-\cvlanguage{English}{advanced (C1)}{9 years}
-\cvlanguage{German}{upper intermediate (B2)}{3 years}
-\cvlanguage{Russian}{native}{}
+English: advanced (C1) \ \ \textbullet \ \ 
+German: upper intermediate (B2) \ \ \textbullet \ \ 
+Russian: native\\
 
 % ------------------------------------------------------------------------------
+% Skills
+% ------------------------------------------------------------------------------
 \section{Skills}
-\cvitemwithcomment{\skill{5}}{%
-  Unix, Python, NumPy, SciPy, Pytest, Git, Bash, \LaTeX{}}{9 years}
-\cvitemwithcomment{\skill{4}}{%
-  Machine learning, Tensorflow 2, Scikit-learn, Pandas}{2 years}
-\cvitemwithcomment{\skill{2}}{%
-  C, C++, Cython, Matlab, Make, MPI, OpenMP, Docker, SQL}{1 year}
-\cvitemwithcomment{\skill{5}}{Object-oriented programming (OOP)}{10 years}
+\begin{description}
+\item[Advanced:] Unix, Python, NumPy, SciPy, Pytest, Git, Bash (11 years)
+\item[Good:] C, Cython, Matlab, Make, MPI, OpenMP, Docker, SQL, Machine learning, Tensorflow 2, Scikit-learn, Pandas (3 years)
+% \item[Competent:] C, C++, Cython, Matlab, Make, MPI, OpenMP, Docker, SQL
+%         (2 years)
+%\cvitemwithcomment{\skill{5}}{Object-oriented programming (OOP)}{10 years}
 % \cvitem{}{Unit testing}
 % \cvitem{}{High-performant numerical codes}
+\end{description}
 
 %-------------------------------------------------------------------------------
-\section{Selected publications}
+% Selected publications
+%-------------------------------------------------------------------------------
+% \section{Selected publications}
 
-\nocite{*}
-\printbibliography[heading=none, nottype=inproceedings]
+% \nocite{*}
+% \printbibliography[heading=none, nottype=inproceedings]
 
+%-------------------------------------------------------------------------------
+% Hobbies
 %-------------------------------------------------------------------------------
 \section{Hobbies}
-
-\renewcommand{\listitemsymbol}{-~} % Changes the symbol used for lists
-
-\cvitem{}{Playing and composing music, hiking, reading}
+Playing and composing music, hiking, reading
 
 \end{document}
